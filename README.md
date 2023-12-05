@@ -1,7 +1,7 @@
 # webfejlesztes
 A weboldalt készítette: Rott Janka
 
-Weblap elérése:
+Weblap elérése: https://rttjnk.github.io/webfejlesztes/husegprogram.html
 
 Az oldal egy olyan kávézó szolgáltatásait mutatja be, ami egyben egy könyvesbolt is.
 Hűségprogramjáról, kínálatáról ad tájékoztatást a felhasználónaak, valamit további
