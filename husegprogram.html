@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Rott Janka">
+    <meta name="description" content="Könyvmoly Hűségprogram">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="kepek/favicon.ico">
+    <title>Hűségprogram</title>
+    <script src="jquery-3.7.1.js"></script>
+    <script src="jquery-validation-1.19.5/dist/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#register").validate({
+                rules: {
+                    nev: "required",
+                    regemail: {
+                        required: true,
+                        email: true
+                    },
+                    regjelszo: {
+                        required: true,
+                        minlength: 6
+                    },
+                    regjelszo2: {
+                        required: true,
+                        minlength: 6
+                    },
+                    szuldat: "required",
+                    mufajok: "required",
+                    elfogad: "required"
+                },
+                messages: {
+                    nev: "Írja be nevét!",
+                    regemail: "Add meg az e-mail címed!",
+                    regjelszo: {
+                        required: "Adj meg egy jelszót!",
+                        minlength: "Jelszavad legalább 6 karakter hosszú legyen!"
+                    },
+                    regjelszo2: {
+                        required: "Add meg mégegyszer a jelszavad!",
+                        minlength: "Jelszavad legalább 6 karakter hosszú legyen!"
+                    },
+                    szuldat: "Add meg a születési dátumodat!",
+                    mufajok: "Add meg az egyik kedvenc műfajodat!",
+                    elfogad: "Fogadd el adatkezelési feltételeinket!"
+                },
+            });
+        });
+    </script>
+    <style>
+        label.error {
+            color: #5b503b;
+            padding: 5px;
+            margin: 5px;
+            background-color: #998e7a;
+            border-radius: 7px;
+            margin-top: 27px;
+        }
+        .urlap.error{
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="kepek/logo.png" alt="Kávé és könyv(kávézónk logoja)" class="logo">
+            <h1>Könyvmoly Kuckó</h1>
+
+        </header>
+
+        <nav>
+            <ul id="menu">
+                <li><a href="index.html">Főoldal</a></li>
+                <li><a href="menu.html">Menü</a></li>
+                <li><a href="galeria.html">Galéria</a></li>
+                <li><a class="active" href="#">Hűségprogram</a></li>
+            </ul>
+        </nav>
+
+
+
+        <article>
+            <h2 class="cim">Hűségprogramunk</h2>
+            <p>
+                <img src="kepek/point.png" alt="Pontgyűjtő füzet piktogram" class="pictogram">
+                "Mi az a Könyvmoly Hűségprogram?" <br>
+                <br>
+                Hűségprogramunk keretein belül számos szenzációs ajánlatban lehet részed. Vásárlásaid során
+                hűségpontokat gyűjthetsz, valamint szezonális kedvezményekre is szert tehetsz, Születésnapodon pedig
+                vendégünk vagy egy italra, valamint féláron vásárolhatod meg könyveinket. <br>
+                <br>
+                Kezdetben a "moly" szintről indulsz, majd 100 pont elérése után a "lepke" szintre kerülsz. Minden a
+                programban résztvevő
+                vásárló számára 10% kedvezményt biztosítunk vásárlásából, legyen
+                szó kávéról, süteményről vagy könyvről. "Lepke" szintű vásárlóink több előnyben részesülnek, ők már 20%
+                kedvezményt kapnak, valamint a szint elérésekor egy egyedi Könyvmoly ajándékban részesülnek.<br>
+                <br>
+                Jelentkezni itt a honlapon, vagy személyesen a kávézóban tudsz, ehhez kérd baristáink segítségét.<br>
+                Csatlakozz a hűségprogramunkhoz, és élvezd a kiváltságokat!
+
+            </p>
+        </article>
+        <article>
+            <h4 class="cim"><a id="torzsvasarlo">Csatlakozz hűségprogramunkhoz:</a></h4>
+            <form id="register" method="post" action="http://szamtud.uni-corvinus.hu/receive.php" novalidate>
+                <table class="husegprogram">
+                    <tr>
+                        <td class="elvalaszto"> <label for="nev">Név:</label><br> <input type="text" name="nev" id="nev" class="urlap"><br> <br>
+                            <label for="regemail">E-mail cím:</label><br> <input type="email" name="regemail" id="regemail"
+                                class="urlap"><br><br>
+                            <label for="regjelszo">Jelszó:</label><br><input type="password" name="regjelszo"
+                                id="regjelszo" class="urlap" onchange="jelszavak()"><br><br>
+                            <label for="regjelszo2"> Jelszó mégegyszer: </label><br><input type="password"
+                                name="regjelszo2" id="regjelszo2" class="urlap" onchange="jelszavak()"><br>
+                            <br> <br>
+                            <label for="szuletes">Születési dátum:</label>
+                            <input type="date" class="urlap" name="szuldat" id="szuletes"> <br>
+                            <br><br>
+
+                        </td>
+                        <td>
+                            <p>
+                                <label for="mufajok">Mi a kedvenc műfajod (később a beállításokban módosíthatod az
+                                    aktuálisnak megfelelően)?</label> <br>
+                                <select class="urlap" name="mufajok" id="mufajok" size="3">
+                                    <option> Romantikus</option>
+                                    <option> Horror</option>
+                                    <option> Krimi</option>
+                                    <option> Thriller</option>
+                                    <option> Sci-fi</option>
+                                    <option> Fantasy</option>
+                                    <option> Pszichológiai</option>
+                                    <option> Életrajzi</option>
+                                    <option> Klasszikus irodalom</option>
+                                </select> <br><br>
+                                <br>
+                                <label for="haviolvasas">Hány könyvet olvasol el egy hónapban átlagosan?</label> <br>
+                                1 <input type="range" name="haviolvasas" id="haviolvasas" min="1" max="6"> 5+ <br>
+                                <br> <br>
+                                <label><input type="checkbox" name="elfogad" id="elfogad" class="urlap">
+                                    Adatkezelési feltételek elfogadása</label>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            
+            <br>
+            <input type="submit" name="lead" id="regisztralas" value="Regisztráció" class="urlap gomb" onchange="jelszavak()">
+            <input type="reset" name="visszaallit" id="visszaallit" value="Visszaállítás" onclick="regtorol()"
+                class="urlap gomb">
+            </form>
+        </article>
+
+
+    </div>
+    <footer>
+        <h4 class="cim">Elérhetőségek:</h4>
+        <p>
+            Nyitvatartás:<br>
+            H-P: 8.00-18.00 <br>
+            Szo-V: 10.00-19.00<br>
+            <br>
+            1085, Budapest, Horánszky u. 24. <br>
+            Telefon: +36-70/452-2981 <br>
+            E-mail: konyvmolykucko@gmail.com <br>
+            <br>
+            Az oldal nem valós adatokat tartalmaz. <br>
+            © Rott Janka, BCE 2023
+
+        </p>
+
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+
+</html>
